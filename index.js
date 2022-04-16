@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
     );
     next();
 });
-app.use(morgan('combined'));
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 app.use("/api/user", authRouter);
 app.use("/api/posts", postRoute);
 
