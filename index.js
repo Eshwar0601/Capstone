@@ -3,6 +3,7 @@ const authRouter = require("./routes/auth");
 const app = express();
 const mongoose = require("mongoose");
 const postRoute = require("./routes/posts");
+var morgan = require('morgan')
 
 DB_URL = "mongodb://localhost:27017/Capstone";
 mongoose.connect(DB_URL, { useNewUrlParser: true }, () => {
@@ -18,6 +19,7 @@ app.use(function (req, res, next) {
     );
     next();
 });
+app.use(morgan('combined'));
 app.use("/api/user", authRouter);
 app.use("/api/posts", postRoute);
 
